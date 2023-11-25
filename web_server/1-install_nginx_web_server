@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #This installs Nginx on my web-01 server
 sudo apt-get update
-sudo apt-get install nginx -y
+sudo apt-get install nginx -yi
+sed -i 's/80 default_server/80 default_server\n\tserver_name _;/g' /etc/nginx/sites-available/default
 sudo mkdir /var/www/html
 sudo touch /var/www/html/index.html
 sudo echo "Holberton School" > /var/www/html/index.html
